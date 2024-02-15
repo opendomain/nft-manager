@@ -64,6 +64,8 @@ function BottomButtonBar({
       onContextMenu={(event) => event.preventDefault()}
     >
       <div className="button-group">
+{
+/********************************************
         <HighlightAllButton
           disabled={disabledHighlightAllButton}
           clickedButtonName={clickedButtonName}
@@ -72,6 +74,8 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
+********************************************/
+}
         <ExtractEntryButton
           disabled={disabledExtractButton}
           clickedButtonName={clickedButtonName}
@@ -80,6 +84,8 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
+{
+/********************************************
         <RenameEntryButton
           disabled={disabledRenameButton}
           clickedButtonName={clickedButtonName}
@@ -96,7 +102,11 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
+********************************************/
+}
       </div>
+{
+/********************************************
       <div className="button-group">
         <CopyEntryButton
           disabled={disabledCopyButton}
@@ -128,6 +138,9 @@ function BottomButtonBar({
           messages={messages}
         />
       </div>
+********************************************/
+}
+
     </div>
   );
 }

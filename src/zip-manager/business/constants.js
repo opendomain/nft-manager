@@ -28,9 +28,9 @@ const OPTIONS_DOS_SKIN = "skin-dos";
 const DEFAULT_OPTIONS = {
   accentColor: "#FF672E",
   skin: OPTIONS_DEFAULT_SKIN,
-  hideNavigationBar: false,
-  hideDownloadManager: false,
-  hideInfobar: false,
+  hideNavigationBar: true,
+  hideDownloadManager: true,
+  hideInfobar: true,
   bufferedWrite: true,
   checkSignature: false,
   keepOrder: true,
@@ -40,10 +40,10 @@ const DEFAULT_OPTIONS = {
   defaultExportPassword: "",
   zoomFactor: 100
 };
-const ZIP_EXTENSION = ".zip";
+const ZIP_EXTENSION = ".nft";
 const ZIP_EXTENSIONS = [
   ZIP_EXTENSION,
-  ".docx",
+  ".zip",
   ".epub",
   ".jar",
   ".odp",

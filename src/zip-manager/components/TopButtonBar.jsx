@@ -43,6 +43,8 @@ function TopButtonBar({
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
+{
+/********************************************
       <div className="button-group">
         <AddFilesButton
           clickedButtonName={clickedButtonName}
@@ -59,6 +61,8 @@ function TopButtonBar({
           messages={messages}
         />
       </div>
+********************************************/
+}
       <div className="button-group">
         <ImportZipButton
           clickedButtonName={clickedButtonName}
@@ -67,6 +71,8 @@ function TopButtonBar({
           constants={constants}
           messages={messages}
         />
+{
+/********************************************
         <ExportZipButton
           disabled={disabledExportZipButton}
           clickedButtonName={clickedButtonName}
@@ -75,6 +81,8 @@ function TopButtonBar({
           constants={constants}
           messages={messages}
         />
+********************************************/
+}
       </div>
       <div className="button-group">
         <ResetButton
@@ -82,7 +90,11 @@ function TopButtonBar({
           onReset={onReset}
           messages={messages}
         />
+{
+/********************************************
         <OptionsButton onOpenOptions={onOpenOptions} messages={messages} />
+********************************************/
+}
       </div>
     </div>
   );

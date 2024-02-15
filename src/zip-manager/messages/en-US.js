@@ -34,7 +34,7 @@ const FORWARD_BUTTON_TOOLTIP =
 
 const CREATE_FOLDER_BUTTON_LABEL = "Create directory";
 const ADD_FILES_BUTTON_LABEL = "Add files";
-const IMPORT_ZIP_BUTTON_LABEL = "Import zip";
+const IMPORT_ZIP_BUTTON_LABEL = "Load iNFT";
 const EXPORT_ZIP_BUTTON_LABEL = "Export zip";
 const RESET_BUTTON_LABEL = "Reset";
 const OPTIONS_BUTTON_LABEL = "Options";
@@ -99,7 +99,7 @@ const CHOOSE_ACTION_DIALOG_ADD_FILE_BUTTON_LABEL = "Add file";
 const CHOOSE_ACTION_TITLE = "Choose action";
 const CHOOSE_ACTION_LABEL =
   "A zip file has been selected, please choose the proper action.";
-const NO_ENTRIES_LABEL = "Drag and drop files and directories here";
+const NO_ENTRIES_LABEL = "Drag and drop iNFTs here";
 const INFO_LABEL = [
   "Source code on ",
   " GitHub ",
