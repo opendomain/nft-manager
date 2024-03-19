@@ -44,39 +44,10 @@ const ZIP_EXTENSION = ".nft";
 const ZIP_EXTENSIONS = [
   ZIP_EXTENSION,
   ".zip",
-  ".epub",
-  ".jar",
-  ".odp",
-  ".ods",
-  ".odt",
-  ".pptx",
-  ".xlsx",
-  ".key",
-  ".pages",
-  ".numbers",
-  ".apk",
   ".ipa"
 ];
 const ZIP_EXTENSIONS_ACCEPT = {
   "application/zip": [ZIP_EXTENSION],
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [
-    ".docx"
-  ],
-  "application/epub+zip": [".epub"],
-  "application/java-archive": [".jar"],
-  "application/vnd.oasis.opendocument.presentation": [".odp"],
-  "application/vnd.oasis.opendocument.spreadsheet": [".ods"],
-  "application/vnd.oasis.opendocument.text": [".odt"],
-  "application/vnd.openxmlformats-officedocument.presentationml.presentation": [
-    ".pptx"
-  ],
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [
-    ".xlsx"
-  ],
-  "application/vnd.apple.keynote": [".key"],
-  "application/vnd.apple.pages": [".pages"],
-  "application/vnd.apple.numbers": [".numbers"],
-  "application/vnd.android.package-archive": [".apk"],
   "application/x-ios-app": [".ipa"]
 };
 const ZIP_EXTENSIONS_ACCEPT_STRING = ZIP_EXTENSIONS.join(",");
