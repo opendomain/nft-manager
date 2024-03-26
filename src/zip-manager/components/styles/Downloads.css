@@ -31,3 +31,19 @@
   block-size: 1em;
   accent-color: var(--accent-color);
 }
+
+
+.file-delete-btn {
+  border: 1px solid;
+  padding: 2px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.file-open-btn{
+  border: 1px solid;
+  padding: 2px;
+  border-radius: 5px;
+  color: #6d6dcd;
+  margin-right: 10px;
+}

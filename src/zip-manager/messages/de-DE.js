@@ -47,6 +47,7 @@ const CUT_BUTTON_LABEL = "Ausschneiden";
 const PASTE_BUTTON_LABEL = "Einfügen";
 const RESET_CLIPBOARD_BUTTON_LABEL = "Zwischenablage zurücksetzen";
 const EXTRACT_BUTTON_LABEL = "Extrahieren";
+const OPEN_BUTTON_LABEL = "Offen"
 const HIGHLIGHT_ALL_BUTTON_LABEL = "Alles auswählen";
 const RENAME_BUTTON_LABEL = "Umbenennen";
 const DELETE_BUTTON_LABEL = "Löschen";
@@ -149,6 +150,7 @@ export {
   PASTE_BUTTON_LABEL,
   RESET_CLIPBOARD_BUTTON_LABEL,
   EXTRACT_BUTTON_LABEL,
+  OPEN_BUTTON_LABEL,
   HIGHLIGHT_ALL_BUTTON_LABEL,
   RENAME_BUTTON_LABEL,
   DELETE_BUTTON_LABEL,

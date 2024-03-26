@@ -4,6 +4,7 @@ function Downloads({
   hidden,
   downloads,
   onAbortDownload,
+  onDownload,
   i18n,
   constants,
   messages
@@ -23,6 +24,7 @@ function Downloads({
               <DownloadEntry
                 download={download}
                 onAbortDownload={onAbortDownload}
+                onDownload={onDownload}
                 i18n={i18n}
                 constants={constants}
                 messages={messages}
@@ -38,6 +40,7 @@ function Downloads({
 function DownloadEntry({
   download,
   onAbortDownload,
+  onDownload,
   i18n,
   constants,
   messages
@@ -47,6 +50,7 @@ function DownloadEntry({
       <DownloadEntryInfo
         download={download}
         onAbortDownload={onAbortDownload}
+        onDownload={onDownload}
         constants={constants}
         messages={messages}
       />
@@ -55,12 +59,19 @@ function DownloadEntry({
   );
 }
 
-function DownloadEntryInfo({ download, onAbortDownload, constants, messages }) {
+function DownloadEntryInfo({ download, onAbortDownload,onDownload, constants, messages }) {
+
   return (
     <div className="download-entry">
       <span className="list-item-name download-entry-name">
         {download.name}
       </span>
+      <FileViewEntryButton
+        download={download}
+        onDownload={onDownload}
+        constants={constants}
+        messages={messages}
+      />
       <DeleteDownloadEntryButton
         download={download}
         onAbortDownload={onAbortDownload}
@@ -71,6 +82,35 @@ function DownloadEntryInfo({ download, onAbortDownload, constants, messages }) {
   );
 }
 
+function FileViewEntryButton({
+  download,
+  onDownload,
+  constants,
+  messages
+}) {
+  function handleClick() {
+    let filename = download.name
+    onDownload({filename})
+  }
+
+  function handleKeyUp(event) {
+    if (event.key === constants.ENTER_KEY) {
+      handleClick();
+    }
+  }
+
+  return (
+    <span
+      className="list-item-button download-entry-abort-button file-open-btn"
+      role="button"
+      onClick={handleClick}
+      onKeyUp={handleKeyUp}
+      tabIndex={0}
+    >
+      {'OPEN'}
+    </span>
+  );
+}
 function DeleteDownloadEntryButton({
   download,
   onAbortDownload,
@@ -89,13 +129,13 @@ function DeleteDownloadEntryButton({
 
   return (
     <span
-      className="list-item-button download-entry-abort-button"
+      className="list-item-button download-entry-abort-button file-delete-btn"
       role="button"
       onClick={handleClick}
       onKeyUp={handleKeyUp}
       tabIndex={0}
     >
-      {messages.ABORT_DOWNLOAD_BUTTON_LABEL}
+      {'REMOVE'}
     </span>
   );
 }

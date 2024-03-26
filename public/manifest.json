@@ -1,7 +1,7 @@
 {
   "short_name": "xNFT Manager",
   "name": "xNFT Manager",
-  "description": "Read and run NFT files.",
+  "description": "Read and run xNFT files.",
   "start_url": "./index.html",
   "display": "fullscreen",
   "theme_color": "#000000",

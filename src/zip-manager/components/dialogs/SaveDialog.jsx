@@ -1,8 +1,9 @@
 import Dialog from "./Dialog.jsx";
 
 import { useEffect, useRef, useState } from "react";
+import { TextWriter } from "@zip.js/zip.js";
 
-function RenameDialog({ data, onRename, onClose, messages }) {
+function SaveDialog({ data, onOpen, onClose, messages }) {
   const filenameInputRef = useRef(null);
   const filenameTextSelected = useRef(false);
   const [filename, setFilename] = useState("");
@@ -11,12 +12,16 @@ function RenameDialog({ data, onRename, onClose, messages }) {
     setFilename(event.target.value);
   }
 
-  function onOpen() {
+  function onOpenq() {
     setFilename(data.filename);
   }
 
-  function handleSubmit() {
-    onRename({ filename });
+  async function handleSubmit() {
+    const zipFileEntry = data.file
+    const writer = new TextWriter();
+    const text = await zipFileEntry.data?.getData(writer)
+    let entry = {name:filename, file:zipFileEntry}
+    onOpen({entry})
   }
 
   function handleClose() {
@@ -27,7 +32,6 @@ function RenameDialog({ data, onRename, onClose, messages }) {
 
   useEffect(() => {
     if (!filenameTextSelected.current && filename) {
-      console.log("----rename select")
       filenameTextSelected.current = true;
       filenameInputRef.current.select();
     }
@@ -35,15 +39,15 @@ function RenameDialog({ data, onRename, onClose, messages }) {
   return (
     <Dialog
       data={data}
-      title={messages.RENAME_TITLE}
+      title={'File Name'}
       cancelLabel={messages.DIALOG_CANCEL_BUTTON_LABEL}
-      submitLabel={messages.RENAME_DIALOG_BUTTON_LABEL}
-      onOpen={onOpen}
+      submitLabel={'Save'}
+      onOpen={onOpenq}
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
       <label>
-        {messages.RENAME_FILENAME_LABEL}
+        {'File Name'}
         <input
           spellCheck="false"
           type="text"
@@ -57,4 +61,4 @@ function RenameDialog({ data, onRename, onClose, messages }) {
   );
 }
 
-export default RenameDialog;
+export default SaveDialog;

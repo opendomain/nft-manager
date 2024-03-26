@@ -1,6 +1,7 @@
 import "./styles/index.css";
 
 import { useEffect, useState, useRef } from "react";
+import { Offline, Online } from "react-detect-offline";
 
 import {
   filesystemService,
@@ -33,7 +34,10 @@ import {
   InfoBar,
   ExportZipDialog,
   ExtractDialog,
+  IframeDialog,
+  SaveDialog,
   RenameDialog,
+  OpenLinkDialog,
   CreateFolderDialog,
   ResetDialog,
   DeleteEntriesDialog,
@@ -44,6 +48,7 @@ import {
 } from "./components/index.jsx";
 import { getMessages } from "./messages/index.js";
 import { getHooks } from "./hooks/hooks.js";
+import { TextWriter } from "@zip.js/zip.js";
 
 const {
   getCommonFeatures,
@@ -53,10 +58,12 @@ const {
   getHighlightedEntriesFeatures,
   getFilesystemFeatures,
   getDownloadsFeatures,
+  indexDbAsync,
   getClipboardFeatures,
   getOptionsFeatures,
   getAppFeatures,
-  getMiscFeatures
+  getMiscFeatures,
+
 } = features;
 const messages = getMessages({ i18nService });
 const apiFilesystem = zipService.createZipFileSystem();
@@ -70,6 +77,7 @@ function ZipManager() {
   const [entriesElementHeight, setEntriesElementHeight] = useState(0);
   const [entriesDeltaHeight, setEntriesDeltaHeight] = useState(0);
   const [highlightedIds, setHighlightedIds] = useState([]);
+  const [importedEntry, setImportedEntry] = useState([])
   const [navigation, setNavigation] = useState({
     previousHighlight: null,
     direction: 0
@@ -101,11 +109,40 @@ function ZipManager() {
   const getEntriesHeight = () => entriesHeightRef.current;
   const setEntriesHeight = (height) => (entriesHeightRef.current = height);
   const setPlayerActive = (active) => (playerActiveRef.current = active);
+  const _dbName = "zipDb";
+  const _dbStore = "zipStore";
+
+  const { getAll, getValue, addValue, update, del, clear, testDBAccess } = indexDbAsync(
+    _dbName, _dbStore
+  )
 
   const { abortDownload, removeDownload } = getDownloadsFeatures({
     setDownloads,
+    del,
     downloadService
   });
+
+  useEffect(() => {
+    window.addEventListener("DirectImport", handleImportedEntry)
+    return () => {
+      window.removeEventListener("DirectImport", handleImportedEntry)
+    }
+  }, [importedEntry]);
+
+  const handleImportedEntry = async () => {
+    if (importedEntry.length) {
+      const writer = new TextWriter();
+      const text = await importedEntry[0].data?.getData(writer)
+      setDialogs({
+        ...dialogs,
+        fileopen: {
+          filename: importedEntry[0].name,
+          file: text
+        }
+      });
+    }
+  }
+
 
   const {
     modifierKeyPressed,
@@ -242,6 +279,13 @@ function ZipManager() {
     constants
   });
 
+  const { openConfirmReset, reset, closeConfirmReset } = getFilesystemFeatures({
+    dialogs,
+    setZipFilesystem,
+    setDialogs,
+    zipService
+  });
+
   const {
     initSelectedFolderFeatures,
     openPromptCreateFolder,
@@ -249,9 +293,13 @@ function ZipManager() {
     closePromptCreateFolder,
     addFiles,
     dropFiles,
+    linkopen,
     closeChooseAction,
     importZipFile,
     openPromptExportZip,
+    openPromptIframe,
+    openPromptSave,
+    openPromptRename,
     exportZip,
     paste,
     closePromptExportZip,
@@ -276,6 +324,10 @@ function ZipManager() {
     saveZipFile,
     getOptions,
     openDisplayError,
+    reset,
+    setEntries,
+    importedEntry,
+    setImportedEntry,
     filesystemService,
     fileHandlersService,
     shareTargetService,
@@ -286,15 +338,21 @@ function ZipManager() {
   const {
     copy,
     cut,
-    openPromptRename,
+    openPromptLink,
     rename,
     closePromptRename,
+    closePromptLink,
     openConfirmDeleteEntries,
     deleteEntries,
     closeConfirmDeleteEntries,
     openPromptExtract,
     extract,
+    fileopen,
+    fileview,
+    filesave,
     closePromptExtract,
+    closePromptIframe,
+    closePromptSave,
     onHighlightedEntriesKeyUp,
     onHighlightedEntriesKeyDown
   } = getHighlightedEntriesFeatures({
@@ -314,9 +372,12 @@ function ZipManager() {
     setHighlightedIds,
     setNavigation,
     setDialogs,
+    getAll,
     setClickedButtonName,
     refreshSelectedFolder,
     updateHistoryData,
+    setDownloads,
+    addValue,
     saveEntries,
     getOptions,
     openDisplayError,
@@ -325,12 +386,7 @@ function ZipManager() {
     constants
   });
 
-  const { openConfirmReset, reset, closeConfirmReset } = getFilesystemFeatures({
-    dialogs,
-    setZipFilesystem,
-    setDialogs,
-    zipService
-  });
+
 
   const { resetClipboardData } = getClipboardFeatures({
     setClipboardData
@@ -403,6 +459,25 @@ function ZipManager() {
     onSelectedFolderKeyDown
   });
 
+  const getDownloadall = async () => {
+    let list = await getAll()
+    if (list.length) {
+      setDownloads({ queue: [], nextId: 0 })
+      list.map((item) => {
+        let download = { id: null, name: item.key, progressValue: 100 }
+        setDownloads((downloads) => {
+          let { nextId } = downloads;
+          download.id = nextId;
+          nextId = nextId + 1;
+          return {
+            nextId,
+            queue: [download, ...downloads.queue]
+          };
+        });
+      })
+    }
+  }
+
   const appClassName = getAppClassName();
 
   useKeyUp(handleKeyUp);
@@ -418,11 +493,17 @@ function ZipManager() {
     initMiscFeatures();
     initOptionsFeatures();
     initAppFeatures();
+    testDBAccess();
+    getDownloadall()
   }, []);
 
   return (
     <div className={appClassName}>
       <main role="application">
+        <div>
+          <Online>APP online</Online>
+          <Offline>APP is OFFLINE</Offline>
+        </div>
         <TopButtonBar
           disabledExportZipButton={disabledExportZip}
           disabledResetButton={disabledReset}
@@ -488,6 +569,9 @@ function ZipManager() {
           onCut={cut}
           onPaste={paste}
           onResetClipboardData={resetClipboardData}
+          onOpen={openPromptIframe}
+          onSave={openPromptSave}
+          onLink={openPromptLink}
           onExtract={extract}
           onHighlightAll={highlightAll}
           onRename={openPromptRename}
@@ -501,7 +585,8 @@ function ZipManager() {
         <Downloads
           downloads={downloads}
           hidden={hiddenDownloadManager}
-          onAbortDownload={abortDownload}
+          onAbortDownload={removeDownload}
+          onDownload={fileview}
           i18n={i18nService}
           constants={constants}
           messages={messages}
@@ -537,10 +622,28 @@ function ZipManager() {
         onClose={closePromptExtract}
         messages={messages}
       />
+      <IframeDialog
+        data={dialogs.fileopen}
+        onOpen={fileopen}
+        onClose={closePromptIframe}
+        messages={messages}
+      />
+      <SaveDialog
+        data={dialogs.save}
+        onOpen={filesave}
+        onClose={closePromptSave}
+        messages={messages}
+      />
       <RenameDialog
         data={dialogs.rename}
         onRename={rename}
         onClose={closePromptRename}
+        messages={messages}
+      />
+      <OpenLinkDialog
+        data={dialogs.link}
+        onLink={linkopen}
+        onClose={closePromptLink}
         messages={messages}
       />
       <ResetDialog

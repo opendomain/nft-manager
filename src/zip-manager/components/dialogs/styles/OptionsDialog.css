@@ -35,3 +35,12 @@
 .options-dialog select {
   inline-size: min(10ch, 100%);
 }
+
+.html-container {
+  width: 60%;
+  height: 60%;
+}
+
+.html-container iframe {
+  height: 400px;
+}

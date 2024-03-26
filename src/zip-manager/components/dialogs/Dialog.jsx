@@ -47,7 +47,7 @@ function Dialog({
           </div>
           <div className="button-group">
             {cancelLabel && <button type="reset">{cancelLabel}</button>}
-            <button type="submit">{submitLabel}</button>
+            {submitLabel && <button type="submit">{submitLabel}</button>}
           </div>
         </div>
       </form>

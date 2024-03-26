@@ -60,6 +60,7 @@ const COPY_BUTTON_NAME = "copy-button";
 const CUT_BUTTON_NAME = "cut-button";
 const PASTE_BUTTON_NAME = "paste-button";
 const EXTRACT_BUTTON_NAME = "extract-button";
+const OPEN_BUTTON_NAME = "open-button";
 const HIGHLIGHT_ALL_BUTTON_NAME = "select-all";
 const RENAME_BUTTON_NAME = "rename-button";
 const DELETE_BUTTON_NAME = "delete-entry-button";
@@ -121,6 +122,7 @@ export {
   CUT_BUTTON_NAME,
   PASTE_BUTTON_NAME,
   EXTRACT_BUTTON_NAME,
+  OPEN_BUTTON_NAME,
   HIGHLIGHT_ALL_BUTTON_NAME,
   RENAME_BUTTON_NAME,
   DELETE_BUTTON_NAME,

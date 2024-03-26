@@ -6,6 +6,7 @@ import getHighlightedEntriesFeatures from "./highlighted-entries.js";
 import getAppFeatures from "./app.js";
 import getFilesystemFeatures from "./filesystem.js";
 import getDownloadsFeatures from "./downloads.js";
+import indexDbAsync from "./db.js";
 import getClipboardFeatures from "./clipboard.js";
 import getOptionsFeatures from "./options.js";
 import getMiscFeatures from "./misc.js";
@@ -19,6 +20,7 @@ export {
   getAppFeatures,
   getFilesystemFeatures,
   getDownloadsFeatures,
+  indexDbAsync,
   getClipboardFeatures,
   getOptionsFeatures,
   getMiscFeatures

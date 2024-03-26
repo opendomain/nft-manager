@@ -117,6 +117,69 @@ function ExtractEntryButton({
   );
 }
 
+function OpenFileButton({
+  disabled,
+  clickedButtonName,
+  onOpen,
+  onClickedButton,
+  constants,
+  messages
+}) {
+  return (
+    <Button
+      name={constants.OPEN_BUTTON_NAME}
+      title={messages.EXTRACT_BUTTON_TOOLTIP}
+      label={messages.OPEN_BUTTON_LABEL}
+      disabled={disabled}
+      clickedButtonName={clickedButtonName}
+      onClick={onOpen}
+      onClickedButton={onClickedButton}
+    />
+  );
+}
+
+function SaveFileButton({
+  disabled,
+  clickedButtonName,
+  onSave,
+  onClickedButton,
+  constants,
+  messages
+}) {
+  return (
+    <Button
+      name={constants.OPEN_BUTTON_NAME}
+      title={'Saving File'}
+      label={'Save File'}
+      disabled={disabled}
+      clickedButtonName={clickedButtonName}
+      onClick={onSave}
+      onClickedButton={onClickedButton}
+    />
+  );
+}
+
+function OpenLinkButton({
+  disabled,
+  clickedButtonName,
+  onLink,
+  onClickedButton,
+  constants,
+  messages
+}) {
+  return (
+    <Button
+      name={'onlink-button'}
+      title={'Getting xNFT using remote url'}
+      label={'xNFT link'}
+      disabled={disabled}
+      clickedButtonName={clickedButtonName}
+      onClick={onLink}
+      onClickedButton={onClickedButton}
+    />
+  );
+}
+
 function RenameEntryButton({
   disabled,
   clickedButtonName,
@@ -347,6 +410,9 @@ export {
   ResetClipboardDataButton,
   HighlightAllButton,
   ExtractEntryButton,
+  OpenFileButton,
+  SaveFileButton,
+  OpenLinkButton,
   RenameEntryButton,
   DeleteEntriesButton,
   CreateFolderButton,

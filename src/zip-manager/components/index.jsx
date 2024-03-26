@@ -6,7 +6,10 @@ import Downloads from "./Downloads.jsx";
 import InfoBar from "./InfoBar.jsx";
 import ExportZipDialog from "./dialogs/ExportZipDialog.jsx";
 import ExtractDialog from "./dialogs/ExtractDialog.jsx";
+import IframeDialog from "./dialogs/IframeDialog.jsx";
+import SaveDialog from "./dialogs/SaveDialog.jsx";
 import RenameDialog from "./dialogs/RenameDialog.jsx";
+import OpenLinkDialog from "./dialogs/OpenLinkDialog.jsx";
 import CreateFolderDialog from "./dialogs/CreateFolderDialog.jsx";
 import ResetDialog from "./dialogs/ResetDialog.jsx";
 import DeleteEntriesDialog from "./dialogs/DeleteEntriesDialog.jsx";
@@ -24,7 +27,10 @@ export {
   InfoBar,
   ExportZipDialog,
   ExtractDialog,
+  IframeDialog,
+  SaveDialog,
   RenameDialog,
+  OpenLinkDialog,
   CreateFolderDialog,
   ResetDialog,
   DeleteEntriesDialog,

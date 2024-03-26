@@ -1,6 +1,7 @@
 import "./styles/BottomButtonBar.css";
 
 import { useRef } from "react";
+import { Offline, Online } from "react-detect-offline";
 
 import {
   CopyEntryButton,
@@ -8,6 +9,9 @@ import {
   PasteEntryButton,
   ResetClipboardDataButton,
   ExtractEntryButton,
+  OpenFileButton,
+  SaveFileButton,
+  OpenLinkButton,
   HighlightAllButton,
   RenameEntryButton,
   DeleteEntriesButton
@@ -28,6 +32,9 @@ function BottomButtonBar({
   onPaste,
   onResetClipboardData,
   onExtract,
+  onOpen,
+  onSave,
+  onLink,
   onHighlightAll,
   onRename,
   onRemove,
@@ -64,8 +71,6 @@ function BottomButtonBar({
       onContextMenu={(event) => event.preventDefault()}
     >
       <div className="button-group">
-{
-/********************************************
         <HighlightAllButton
           disabled={disabledHighlightAllButton}
           clickedButtonName={clickedButtonName}
@@ -74,8 +79,6 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
-********************************************/
-}
         <ExtractEntryButton
           disabled={disabledExtractButton}
           clickedButtonName={clickedButtonName}
@@ -84,16 +87,42 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
-{
-/********************************************
-        <RenameEntryButton
+        <OpenFileButton 
+          disabled={disabledExtractButton}
+          clickedButtonName={clickedButtonName}
+          onOpen={onOpen}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
+        <Online>
+          <OpenLinkButton 
+            disabled={false}
+            clickedButtonName={clickedButtonName}
+            onLink={onLink}
+            onClickedButton={onClickedButton}
+            constants={constants}
+            messages={messages}
+          />
+        </Online>
+
+        <SaveFileButton 
+          disabled={disabledExtractButton}
+          clickedButtonName={clickedButtonName}
+          onSave={onSave}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
+        
+        {/* <RenameEntryButton
           disabled={disabledRenameButton}
           clickedButtonName={clickedButtonName}
           onRename={onRename}
           onClickedButton={onClickedButton}
           constants={constants}
           messages={messages}
-        />
+        /> */}
         <DeleteEntriesButton
           disabled={disabledDeleteButton}
           clickedButtonName={clickedButtonName}
@@ -102,11 +131,7 @@ function BottomButtonBar({
           constants={constants}
           messages={messages}
         />
-********************************************/
-}
       </div>
-{
-/********************************************
       <div className="button-group">
         <CopyEntryButton
           disabled={disabledCopyButton}
@@ -138,9 +163,6 @@ function BottomButtonBar({
           messages={messages}
         />
       </div>
-********************************************/
-}
-
     </div>
   );
 }

@@ -57,6 +57,8 @@ function getUIState({
     dialogs.exportZip ||
     dialogs.extract ||
     dialogs.rename ||
+    dialogs.save ||
+    dialogs.fileopen ||
     dialogs.createFolder ||
     dialogs.deleteEntries ||
     dialogs.reset ||

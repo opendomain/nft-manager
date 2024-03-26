@@ -1,3 +1,5 @@
+import { TextWriter } from "@zip.js/zip.js";
+
 function getHighlightedEntriesFeatures({
   disabledCopy,
   disabledCut,
@@ -15,9 +17,12 @@ function getHighlightedEntriesFeatures({
   setHighlightedIds,
   setNavigation,
   setDialogs,
+  getAll,
   setClickedButtonName,
   refreshSelectedFolder,
   updateHistoryData,
+  setDownloads,
+  addValue,
   saveEntries,
   getOptions,
   openDisplayError,
@@ -51,14 +56,17 @@ function getHighlightedEntriesFeatures({
     });
   }
 
-  function openPromptRename() {
+
+
+  function openPromptLink() {
     setDialogs({
       ...dialogs,
-      rename: {
-        filename: highlightedEntry.name
-      }
+      link:"http://"
     });
   }
+
+
+
 
   function rename({ filename }) {
     try {
@@ -70,10 +78,21 @@ function getHighlightedEntriesFeatures({
       openDisplayError(error.message);
     }
   }
+
+
+
+
   function closePromptRename() {
     setDialogs({
       ...dialogs,
       rename: null
+    });
+  }
+
+  function closePromptLink() {
+    setDialogs({
+      ...dialogs,
+      link: null
     });
   }
 
@@ -159,14 +178,92 @@ function getHighlightedEntriesFeatures({
         openDisplayError(error.message);
       }
     }
-
     download();
   }
+
+  function fileopen({ entries = highlightedEntries, filename } = {}) {
+    async function openning() {
+      try {
+        const options = getOptions();
+        filename = entries.length === 1 ? filename : null;
+      } catch (error) {
+        openDisplayError(error.message);
+      }
+    }
+    openning();
+  }
+
+
+  function fileview({ entries = highlightedEntries, filename } = {}) {
+    async function openning() {
+      try {
+        let list = await getAll()
+        let selected_obj = list.filter(item => item.key == filename)
+        setDialogs({
+          ...dialogs,
+          fileopen: {
+            filename: selected_obj[0].key,
+            file:selected_obj[0].value
+          }
+        });
+       
+
+      } catch (error) {
+        openDisplayError(error.message);
+      }
+    }
+    openning();
+  }
+
+  function filesave({ entries = highlightedEntries, entry } = {}) {
+    async function openning() {
+      try {
+        let filename = entry.name
+        let filecontent = entry.file
+        let list = await getAll()
+        let selected_obj = list.filter(item => item.key == filename)
+        if (selected_obj.length) {
+          openDisplayError('The current file name exists already!');
+        } else {
+          let saveFile = await addValue(filename, filecontent)
+          let download = {id:null, name: filename, progressValue:100}
+          setDownloads((downloads) => {
+            let { nextId } = downloads;
+            download.id = nextId;
+            nextId = nextId + 1;
+            return {
+              nextId,
+              queue: [download, ...downloads.queue]
+            };
+          });
+        }      
+
+      } catch (error) {
+        openDisplayError(error.message);
+      }
+    }
+    openning();
+  }
+
 
   function closePromptExtract() {
     setDialogs({
       ...dialogs,
       extract: null
+    });
+  }
+
+  function closePromptIframe() {
+    setDialogs({
+      ...dialogs,
+      fileopen: null
+    });
+  }
+
+  function closePromptSave() {
+    setDialogs({
+      ...dialogs,
+      save: null
     });
   }
 
@@ -202,15 +299,21 @@ function getHighlightedEntriesFeatures({
   return {
     copy,
     cut,
-    openPromptRename,
+    openPromptLink,
     rename,
     closePromptRename,
+    closePromptLink,
     openConfirmDeleteEntries,
     deleteEntries,
     closeConfirmDeleteEntries,
     openPromptExtract,
     extract,
+    fileopen,
+    fileview,
+    filesave,
     closePromptExtract,
+    closePromptIframe,
+    closePromptSave,
     onHighlightedEntriesKeyUp,
     onHighlightedEntriesKeyDown
   };
