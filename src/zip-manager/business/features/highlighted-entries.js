@@ -17,6 +17,7 @@ function getHighlightedEntriesFeatures({
   setHighlightedIds,
   setNavigation,
   setDialogs,
+  importedEntry,
   getAll,
   setClickedButtonName,
   refreshSelectedFolder,
@@ -172,8 +173,8 @@ function getHighlightedEntriesFeatures({
     async function download() {
       try {
         const options = getOptions();
-        filename = entries.length === 1 ? filename : null;
-        await saveEntries(entries, filename, options);
+        filename = importedEntry.length === 1 ? filename : null;
+        await saveEntries(importedEntry, filename, options);
       } catch (error) {
         openDisplayError(error.message);
       }

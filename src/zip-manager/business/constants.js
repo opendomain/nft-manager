@@ -44,10 +44,14 @@ const ZIP_EXTENSION = ".nft";
 const ZIP_EXTENSIONS = [
   ZIP_EXTENSION,
   ".zip",
+  ".png",
+  ".nft",
   ".ipa"
 ];
 const ZIP_EXTENSIONS_ACCEPT = {
   "application/zip": [ZIP_EXTENSION],
+  "image/png": [".png"],
+  "application/zip": [".nft"],
   "application/x-ios-app": [".ipa"]
 };
 const ZIP_EXTENSIONS_ACCEPT_STRING = ZIP_EXTENSIONS.join(",");

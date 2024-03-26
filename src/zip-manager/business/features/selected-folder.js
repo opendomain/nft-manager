@@ -261,6 +261,7 @@ function getSelectedFolderFeatures({
     updateZipFile();
   }
 
+/*************************************************************************************
   function AwaitimportZipFile(zipFile, options = {}) {
     async function updateZipFile() {
       reset()
@@ -327,7 +328,7 @@ function getSelectedFolderFeatures({
 
     updateZipFile();
   }
-
+*************************************************************************************/
   function highlightSortedEntries(entries) {
     highlightEntries(
       entries.sort((previousChild, nextChild) =>

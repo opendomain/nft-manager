@@ -372,6 +372,7 @@ function ZipManager() {
     setHighlightedIds,
     setNavigation,
     setDialogs,
+    importedEntry,
     getAll,
     setClickedButtonName,
     refreshSelectedFolder,
