@@ -1,9 +1,12 @@
 import "./styles/TopButtonBar.css";
 
+import { Offline, Online } from "react-detect-offline";
+
 import {
   AddFilesButton,
   CreateFolderButton,
   ImportZipButton,
+  OpenLinkButton,
   ExportZipButton,
   ResetButton,
   OptionsButton
@@ -15,6 +18,7 @@ function TopButtonBar({
   clickedButtonName,
   onCreateFolder,
   onImportZipFile,
+  onLink,
   onExportZip,
   onReset,
   onOpenOptions,
@@ -70,6 +74,16 @@ function TopButtonBar({
           constants={constants}
           messages={messages}
         />
+        <Online>
+          <OpenLinkButton 
+            disabled={false}
+            clickedButtonName={clickedButtonName}
+            onLink={onLink}
+            onClickedButton={onClickedButton}
+            constants={constants}
+            messages={messages}
+          />
+        </Online>
 {/*
         <ExportZipButton
           disabled={disabledExportZipButton}

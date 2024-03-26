@@ -512,6 +512,7 @@ function ZipManager() {
           onCreateFolder={openPromptCreateFolder}
           onAddFiles={addFiles}
           onImportZipFile={importZipFile}
+          onLink={openPromptLink}
           onExportZip={openPromptExportZip}
           onReset={openConfirmReset}
           onOpenOptions={openOptions}
