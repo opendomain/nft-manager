@@ -149,8 +149,8 @@ function SaveFileButton({
   return (
     <Button
       name={constants.OPEN_BUTTON_NAME}
-      title={'Saving File'}
-      label={'Save File'}
+      title={'Install xNFT'}
+      label={'Install xNFT'}
       disabled={disabled}
       clickedButtonName={clickedButtonName}
       onClick={onSave}

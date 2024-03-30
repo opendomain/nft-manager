@@ -37,10 +37,10 @@
 }
 
 .html-container {
-  width: 60%;
-  height: 60%;
+  width: 90%;
+  height: 80%;
 }
 
 .html-container iframe {
-  height: 400px;
+  height: 600px;
 }

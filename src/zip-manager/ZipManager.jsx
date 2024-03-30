@@ -507,6 +507,7 @@ function ZipManager() {
         </div>
         <TopButtonBar
           disabledExportZipButton={disabledExportZip}
+          disabledExtractButton={disabledExtract}
           disabledResetButton={disabledReset}
           clickedButtonName={clickedButtonName}
           onCreateFolder={openPromptCreateFolder}
@@ -514,6 +515,9 @@ function ZipManager() {
           onImportZipFile={importZipFile}
           onLink={openPromptLink}
           onExportZip={openPromptExportZip}
+          onOpen={openPromptIframe}
+          onSave={openPromptSave}
+          onExtract={extract}
           onReset={openConfirmReset}
           onOpenOptions={openOptions}
           onShowImportZipFilePicker={showImportZipFilePicker}
@@ -557,33 +561,35 @@ function ZipManager() {
           constants={constants}
           messages={messages}
         />
-        <BottomButtonBar
-          disabledCopyButton={disabledCopy}
-          disabledCutButton={disabledCut}
-          disabledPasteButton={disabledPaste}
-          disabledResetClipboardDataButton={disabledResetClipboardData}
-          disabledExtractButton={disabledExtract}
-          disabledHighlightAllButton={disabledHighlightAll}
-          disabledRenameButton={disabledRename}
-          disabledDeleteButton={disabledDelete}
-          clickedButtonName={clickedButtonName}
-          onCopy={copy}
-          onCut={cut}
-          onPaste={paste}
-          onResetClipboardData={resetClipboardData}
-          onOpen={openPromptIframe}
-          onSave={openPromptSave}
-          onLink={openPromptLink}
-          onExtract={extract}
-          onHighlightAll={highlightAll}
-          onRename={openPromptRename}
-          onRemove={openConfirmDeleteEntries}
-          onMove={resizeEntries}
-          onUpdateElementHeight={updateEntriesElementHeightEnd}
-          onClickedButton={resetClickedButtonName}
-          constants={constants}
-          messages={messages}
-        />
+{/*
+          <BottomButtonBar
+            disabledCopyButton={disabledCopy}
+            disabledCutButton={disabledCut}
+            disabledPasteButton={disabledPaste}
+            disabledResetClipboardDataButton={disabledResetClipboardData}
+            disabledExtractButton={disabledExtract}
+            disabledHighlightAllButton={disabledHighlightAll}
+            disabledRenameButton={disabledRename}
+            disabledDeleteButton={disabledDelete}
+            clickedButtonName={clickedButtonName}
+            onCopy={copy}
+            onCut={cut}
+            onPaste={paste}
+            onResetClipboardData={resetClipboardData}
+            onOpen={openPromptIframe}
+            onSave={openPromptSave}
+            onLink={openPromptLink}
+            onExtract={extract}
+            onHighlightAll={highlightAll}
+            onRename={openPromptRename}
+            onRemove={openConfirmDeleteEntries}
+            onMove={resizeEntries}
+            onUpdateElementHeight={updateEntriesElementHeightEnd}
+            onClickedButton={resetClickedButtonName}
+            constants={constants}
+            messages={messages}
+          />
+  */}
         <Downloads
           downloads={downloads}
           hidden={hiddenDownloadManager}

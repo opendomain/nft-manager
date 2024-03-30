@@ -107,7 +107,7 @@ function FileViewEntryButton({
       onKeyUp={handleKeyUp}
       tabIndex={0}
     >
-      {'OPEN'}
+      {'RUN'}
     </span>
   );
 }
@@ -135,7 +135,7 @@ function DeleteDownloadEntryButton({
       onKeyUp={handleKeyUp}
       tabIndex={0}
     >
-      {'REMOVE'}
+      {'UNINSTALL'}
     </span>
   );
 }

@@ -8,18 +8,25 @@ import {
   ImportZipButton,
   OpenLinkButton,
   ExportZipButton,
+  OpenFileButton,
+  SaveFileButton,
+  ExtractEntryButton,
   ResetButton,
   OptionsButton
 } from "./Buttons.jsx";
 
 function TopButtonBar({
   disabledExportZipButton,
+  disabledExtractButton,
   disabledResetButton,
   clickedButtonName,
   onCreateFolder,
   onImportZipFile,
   onLink,
   onExportZip,
+  onOpen,
+  onSave,
+  onExtract,
   onReset,
   onOpenOptions,
   onShowImportZipFilePicker,
@@ -67,13 +74,6 @@ function TopButtonBar({
       </div>
 */}
       <div className="button-group">
-        <ImportZipButton
-          clickedButtonName={clickedButtonName}
-          onShowImportZipFilePicker={onShowImportZipFilePicker}
-          onClickedButton={onClickedButton}
-          constants={constants}
-          messages={messages}
-        />
         <Online>
           <OpenLinkButton 
             disabled={false}
@@ -84,6 +84,13 @@ function TopButtonBar({
             messages={messages}
           />
         </Online>
+        <ImportZipButton
+          clickedButtonName={clickedButtonName}
+          onShowImportZipFilePicker={onShowImportZipFilePicker}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
 {/*
         <ExportZipButton
           disabled={disabledExportZipButton}
@@ -96,6 +103,33 @@ function TopButtonBar({
 */}
       </div>
       <div className="button-group">
+        <OpenFileButton 
+          disabled={disabledExtractButton}
+          clickedButtonName={clickedButtonName}
+          onOpen={onOpen}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
+        <SaveFileButton 
+          disabled={disabledExtractButton}
+          clickedButtonName={clickedButtonName}
+          onSave={onSave}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
+        <ExtractEntryButton
+          disabled={disabledExtractButton}
+          clickedButtonName={clickedButtonName}
+          onExtract={onExtract}
+          onClickedButton={onClickedButton}
+          constants={constants}
+          messages={messages}
+        />
+      </div>
+{/*
+      <div className="button-group">
         <ResetButton
           disabled={disabledResetButton}
           onReset={onReset}
@@ -103,6 +137,7 @@ function TopButtonBar({
         />
         <OptionsButton onOpenOptions={onOpenOptions} messages={messages} />
       </div>
+*/}
     </div>
   );
 }

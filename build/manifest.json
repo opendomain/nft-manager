@@ -1,7 +1,7 @@
 {
-  "short_name": "Zip Manager",
-  "name": "Zip Manager",
-  "description": "Read, edit and write zip files.",
+  "short_name": "xNFT Manager",
+  "name": "xNFT Manager",
+  "description": "Read and run xNFT files.",
   "start_url": "./index.html",
   "display": "fullscreen",
   "theme_color": "#000000",
@@ -53,7 +53,7 @@
       "action": "./index.html",
       "accept": {
         "application/zip": [
-          ".zip"
+          ".nft"
         ],
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [
           ".docx"

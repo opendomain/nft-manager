@@ -45,7 +45,7 @@ function IframeDialog({ data, onOpen, onClose, messages }) {
     <Dialog
       className="html-container"
       data={data}
-      title={'Imported Html'}
+      title={''}
       cancelLabel={'Close'}
       submitLabel={''}
       
