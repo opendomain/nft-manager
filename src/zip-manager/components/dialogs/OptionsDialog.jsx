@@ -12,9 +12,9 @@ function OptionsDialog({
   messages
 }) {
   const [zoomFactor, setZoomFactor] = useState("");
-  const [hideNavigationBar, setHideNavigationBar] = useState(true);
-  const [hideDownloadManager, setHideDownloadManager] = useState(true);
-  const [hideInfobar, setHideInfobar] = useState(true);
+  const [hideNavigationBar, setHideNavigationBar] = useState(false);
+  const [hideDownloadManager, setHideDownloadManager] = useState(false);
+  const [hideInfobar, setHideInfobar] = useState(false);
   const [skin, setSkin] = useState("default");
   const [defaultExportPassword, setDefaultExportPassword] = useState("");
   const [promptForExportPassword, setPromptForExportPassword] = useState(false);

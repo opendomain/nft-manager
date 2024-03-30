@@ -29,7 +29,7 @@ const DEFAULT_OPTIONS = {
   accentColor: "#FF672E",
   skin: OPTIONS_DEFAULT_SKIN,
   hideNavigationBar: true,
-  hideDownloadManager: true,
+  hideDownloadManager: false,
   hideInfobar: true,
   bufferedWrite: true,
   checkSignature: false,

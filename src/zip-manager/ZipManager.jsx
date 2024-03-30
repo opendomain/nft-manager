@@ -44,7 +44,8 @@ import {
   ErrorMessageDialog,
   ImportPasswordDialog,
   OptionsDialog,
-  ChooseActionDialog
+  ChooseActionDialog,
+  InstallPWA
 } from "./components/index.jsx";
 import { getMessages } from "./messages/index.js";
 import { getHooks } from "./hooks/hooks.js";
@@ -502,7 +503,9 @@ function ZipManager() {
     <div className={appClassName}>
       <main role="application">
         <div>
-          <Online>APP online</Online>
+          <Online>
+              <InstallPWA />
+          </Online>
           <Offline>APP is OFFLINE</Offline>
         </div>
         <TopButtonBar
@@ -540,6 +543,16 @@ function ZipManager() {
           constants={constants}
           messages={messages}
         />
+        <Downloads
+          downloads={downloads}
+          hidden={hiddenDownloadManager}
+          onAbortDownload={removeDownload}
+          onDownload={fileview}
+          i18n={i18nService}
+          constants={constants}
+          messages={messages}
+        />
+{/* 
         <Entries
           entries={entries}
           selectedFolder={selectedFolder}
@@ -561,6 +574,7 @@ function ZipManager() {
           constants={constants}
           messages={messages}
         />
+*/}
 {/*
           <BottomButtonBar
             disabledCopyButton={disabledCopy}
@@ -590,15 +604,6 @@ function ZipManager() {
             messages={messages}
           />
   */}
-        <Downloads
-          downloads={downloads}
-          hidden={hiddenDownloadManager}
-          onAbortDownload={removeDownload}
-          onDownload={fileview}
-          i18n={i18nService}
-          constants={constants}
-          messages={messages}
-        />
       </main>
       <InfoBar
         hidden={hiddenInfobar}

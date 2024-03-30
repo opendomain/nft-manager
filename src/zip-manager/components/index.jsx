@@ -17,6 +17,7 @@ import ErrorMessageDialog from "./dialogs/ErrorMessageDialog.jsx";
 import ImportPasswordDialog from "./dialogs/ImportPasswordDialog.jsx";
 import OptionsDialog from "./dialogs/OptionsDialog.jsx";
 import ChooseActionDialog from "./dialogs/ChooseActionDialog.jsx";
+import InstallPWA from "./InstallPWA.jsx";
 
 export {
   TopButtonBar,
@@ -37,5 +38,6 @@ export {
   ErrorMessageDialog,
   ImportPasswordDialog,
   OptionsDialog,
-  ChooseActionDialog
+  ChooseActionDialog,
+  InstallPWA
 };
