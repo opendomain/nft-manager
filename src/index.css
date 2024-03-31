@@ -12,3 +12,18 @@ body {
   src: url("/assets/fonts/Exo-VariableFont_wght.ttf");
   font-display: swap;
 }
+
+* {
+  font-size: 5vw;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  width: 50%;
+  height: 50%;
+}

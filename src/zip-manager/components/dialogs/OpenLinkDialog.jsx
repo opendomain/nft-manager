@@ -21,10 +21,11 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
     setFileurl("");
     onClose();
   }
+  
   return (
     <Dialog
       data={data}
-      title={'Please put remote url.'}
+      title={'Please put url of xNFT'}
       cancelLabel={messages.DIALOG_CANCEL_BUTTON_LABEL}
       submitLabel={'Download'}
       onOpen={onOpen}
@@ -32,7 +33,7 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
       onSubmit={handleSubmit}
     >
       <label>
-        {'Remote Url'}
+        <a href="https://pardontrump.com/images/PardonTrump.NFT" target="_blank">{'Example'}</a>
         <input
           type="text"
           value={fileurl}

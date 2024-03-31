@@ -286,21 +286,21 @@ a:visited {
 
 @media (max-width: 60ch) {
   * {
-    font-size: 0.85rem;
+    font-size: 5vw;
   }
 
   :root .info-bar .source-link * {
-    font-size: 0.65rem;
+    font-size: 5vw;
   }
 }
 
 @media (max-width: 40ch) {
   * {
-    font-size: 0.8rem;
+    font-size: 5vw;
   }
 
   :root .info-bar .source-link * {
-    font-size: 0.55rem;
+    font-size: 5vw;
   }
 }
 

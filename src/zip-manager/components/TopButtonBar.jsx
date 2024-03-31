@@ -138,6 +138,7 @@ function TopButtonBar({
         <OptionsButton onOpenOptions={onOpenOptions} messages={messages} />
       </div>
 */}
+<div className="button-group"></div>
     </div>
   );
 }

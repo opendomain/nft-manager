@@ -502,11 +502,13 @@ function ZipManager() {
   return (
     <div className={appClassName}>
       <main role="application">
-        <div>
+        <div className="container">
+          <span className="centered">
           <Online>
               <InstallPWA />
           </Online>
-          <Offline>APP is OFFLINE</Offline>
+          <Offline>xNFT Manager OFFLINE</Offline>
+          </span>
         </div>
         <TopButtonBar
           disabledExportZipButton={disabledExportZip}
