@@ -147,8 +147,11 @@ function getSelectedFolderFeatures({
   function linkopen({fileurl}) {
     async function fetchZipContent() {
       try {
-        const proxyurl = 'https://corsproxy.io/?' + encodeURIComponent(fileurl);
-        const response = await fetch(proxyurl);
+        const response = await fetch(fileurl);
+        if (!response.ok) {
+          const proxyurl = 'https://corsproxy.io/?' + encodeURIComponent(fileurl);
+          const response = await fetch(proxyurl);
+        }
         if (!response.ok) {
           throw new Error('Failed to fetch ZIP file');
         }

@@ -1,4 +1,4 @@
-function getDownloadsFeatures({ setDownloads,del, downloadService }) {
+function getDownloadsFeatures({ setDownloads, del, downloadService }) {
   function abortDownload(deletedDownload) {
     removeDownload(deletedDownload);
     downloadService.abortDownload(deletedDownload.controller);
@@ -12,7 +12,6 @@ function getDownloadsFeatures({ setDownloads,del, downloadService }) {
         (download) => download.id !== deletedDownload.id
       )
     }));
-    
   }
 
   return {

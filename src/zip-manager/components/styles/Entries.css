@@ -90,7 +90,7 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 4vw;
     line-height: 1.5em;
     text-shadow: var(--no-entries-outline-width-negative)
         var(--no-entries-outline-width-negative) 0 var(--accent-color),

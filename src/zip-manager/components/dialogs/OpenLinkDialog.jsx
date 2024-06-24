@@ -21,11 +21,18 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
     setFileurl("");
     onClose();
   }
+
+  function setTrumpUrl() {
+    setFileurl('https://pardontrump.com/vote/images/PardonTrump.NFT');
+  }
   
+  function setDragonUrl() {
+    setFileurl('https://dragonpoker.com/images/DragonPoker.png');
+  }
+
   return (
     <Dialog
       data={data}
-      title={'Please put url of xNFT'}
       cancelLabel={messages.DIALOG_CANCEL_BUTTON_LABEL}
       submitLabel={'Download'}
       onOpen={onOpen}
@@ -33,7 +40,8 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
       onSubmit={handleSubmit}
     >
       <label>
-        <a href="https://pardontrump.com/images/PardonTrump.NFT" target="_blank">{'Example'}</a>
+      <a href="#" onClick={setTrumpUrl}>{'Pardon Trump'}</a>
+      <a href="#" onClick={setDragonUrl}>{'Dragon Poker'}</a>
         <input
           type="text"
           value={fileurl}
