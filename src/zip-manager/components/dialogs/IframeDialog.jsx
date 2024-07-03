@@ -1,4 +1,4 @@
-import Dialog from "./Dialog.jsx";
+import DialogForIFrame from "./DialogForIFrame.jsx";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -11,14 +11,9 @@ function IframeDialog({ data, onOpen, onClose, messages }) {
   const [htmlcontent, setHtmlContent] = useState("");
   const [initialContent, setInitialContent] = useState("")
 
-
   function onOpen1() {
     setHtmlContent(initialContent)
     setFilename(data.filename);
-  }
-
-  function handleSubmit() {
-    onOpen({ filename, entries: data.entries });
   }
 
   function handleClose() {
@@ -41,20 +36,18 @@ function IframeDialog({ data, onOpen, onClose, messages }) {
       getHtmlContent()
     }
   }, [filename]);
+
   return (
-    <Dialog
+    <DialogForIFrame
       className="html-container"
       data={data}
-      title={''}
-      cancelLabel={'Close'}
-      submitLabel={''}
+      cancelLabel={'X'}
       
       onOpen={onOpen1}
       onClose={handleClose}
-      onSubmit={handleSubmit}
     >
-       <iframe srcDoc={htmlcontent.toString('utf-8')} sandbox="allow-scripts" title="Iframe App"></iframe>
-    </Dialog>
+       <iframe srcDoc={htmlcontent.toString('utf-8')} sandbox="allow-scripts" title="" id="iFrameXnft" ></iframe>
+    </DialogForIFrame>
   );
 }
 

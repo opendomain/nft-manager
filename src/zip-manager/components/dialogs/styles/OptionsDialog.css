@@ -37,10 +37,27 @@
 }
 
 .html-container {
-  width: 90%;
-  height: 80%;
+  margin: auto;
+  border: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 95vw;
+  max-height: 95vh;
+  text-align: center;
 }
 
 .html-container iframe {
-  height: 600px;
+  margin: auto;
+  border: 0px;
+  padding: 0px;
+  width: 90vw;
+  height: 90vh;
+}
+
+.html-container button {
+  margin: 10px;
+  margin-left: auto;
+  border: 0px;
+  font-size: 1.1vw;
 }

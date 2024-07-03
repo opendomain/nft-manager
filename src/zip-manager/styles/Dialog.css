@@ -79,3 +79,13 @@ dialog .button-bar {
 dialog .button-group:first-of-type {
   flex: 1;
 }
+
+dialog .button-small {
+  justify-content: right;
+  align-items:normal;
+  text-align:right;
+  font-weight: normal;
+  font-size: 1vw;
+  line-height: 1em;
+}
+

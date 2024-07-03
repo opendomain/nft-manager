@@ -21,13 +21,9 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
     setFileurl("");
     onClose();
   }
-
-  function setTrumpUrl() {
-    setFileurl('https://pardontrump.com/vote/images/PardonTrump.NFT');
-  }
   
-  function setDragonUrl() {
-    setFileurl('https://dragonpoker.com/images/DragonPoker.png');
+  function setPepeUrl() {
+    setFileurl('https://pepe.poker/images/PepePokerXnft.png');
   }
 
   return (
@@ -40,8 +36,7 @@ function OpenLinkDialog({ data, onLink, onClose, messages }) {
       onSubmit={handleSubmit}
     >
       <label>
-      <a href="#" onClick={setTrumpUrl}>{'Pardon Trump'}</a>
-      <a href="#" onClick={setDragonUrl}>{'Dragon Poker'}</a>
+      <a href="#" onClick={setPepeUrl}>{'Pepe Poker'}</a>
         <input
           type="text"
           value={fileurl}
